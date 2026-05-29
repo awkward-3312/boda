@@ -4,12 +4,31 @@
 
 const openEnvelope = document.getElementById("openEnvelope");
 const invitationSection = document.getElementById("invitacion");
+let envelopeAnimationTimer;
 
 if (openEnvelope && invitationSection) {
     openEnvelope.addEventListener("click", () => {
         invitationSection.scrollIntoView({
             behavior: "smooth"
         });
+
+        openEnvelope.setAttribute("aria-expanded", "true");
+
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            return;
+        }
+
+        window.clearTimeout(envelopeAnimationTimer);
+
+        envelopeAnimationTimer = window.setTimeout(() => {
+            invitationSection.classList.remove("is-opening");
+            void invitationSection.offsetWidth;
+            invitationSection.classList.add("is-opening");
+
+            envelopeAnimationTimer = window.setTimeout(() => {
+                invitationSection.classList.remove("is-opening");
+            }, 1800);
+        }, 420);
     });
 }
 
