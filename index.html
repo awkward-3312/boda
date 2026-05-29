@@ -10,6 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+  <!-- Iconos formales -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <!-- CSS -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
@@ -23,7 +26,7 @@
       <p class="small-title">Estás cordialmente invitado a la boda de</p>
       <h1>Andrea & Jaime</h1>
 
-      <button class="envelope-button" id="openEnvelope">
+      <button class="envelope-button" id="openEnvelope" type="button" aria-label="Abrir invitación">
         <span>Clic aquí</span>
       </button>
 
@@ -35,15 +38,16 @@
     <section class="section envelope-section" id="invitacion">
       <div class="envelope">
         <div class="photo-card">
-          <img src="assets/img/novios.jpg" alt="Foto de Andrea y Jaime">
+          <img src="assets/IMG_1.jpg" alt="Foto de Andrea y Jaime" decoding="async">
         </div>
       </div>
 
       <div class="intro-card">
         <p>Tenemos el honor de invitarte a nuestra boda</p>
         <h2>Andrea<br>&<br>Jaime</h2>
+
         <blockquote>
-          “Uno solo puede ser vencido, pero dos pueden resistir. 
+          “Uno solo puede ser vencido, pero dos pueden resistir.
           ¡La cuerda de tres hilos no se rompe fácilmente!”
           <span>Eclesiastés 4:12 NVI</span>
         </blockquote>
@@ -58,17 +62,32 @@
       </p>
     </section>
 
+    <!-- GALERÍA -->
+    <section class="section gallery-section">
+      <h2>Nuestra historia</h2>
+
+      <div class="gallery">
+        <div class="gallery-card">
+          <img src="assets/IMG_1.jpg" alt="Andrea y Jaime" loading="lazy" decoding="async">
+        </div>
+
+        <div class="gallery-card">
+          <img src="assets/IMG_2.jpg" alt="Andrea y Jaime" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </section>
+
     <!-- FECHA -->
     <section class="section date-section">
       <h2>Junio 2026</h2>
 
       <div class="calendar">
         <div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div><div>Dom</div>
-        <span></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
-        <span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span>
-        <span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span class="active-date">20</span>
-        <span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span>
-        <span>28</span><span>29</span><span>30</span>
+        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
+        <span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span>
+        <span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span class="active-date">20</span><span>21</span>
+        <span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span>
+        <span>29</span><span>30</span>
       </div>
 
       <div class="countdown" id="countdown">
@@ -82,17 +101,84 @@
     <!-- MÚSICA -->
     <section class="section music-section">
       <h2>Nuestra canción</h2>
-      <p>Presiona play para escuchar la música de nuestra invitación.</p>
 
-      <div class="music-player">
-        <iframe
-          id="youtubePlayer"
-          src="https://www.youtube.com/embed/kM-XmhwDWSc?enablejsapi=1"
-          title="Música de la boda"
-          allow="autoplay; encrypted-media"
-          allowfullscreen>
-        </iframe>
+      <p>
+        Presiona el botón para escuchar la canción que acompaña nuestra historia.
+      </p>
+
+      <button class="music-btn" id="musicBtn" type="button" aria-pressed="false">
+        <i class="fa-solid fa-play"></i>
+        Escuchar música
+      </button>
+
+      <iframe
+        id="youtubePlayer"
+        class="youtube-player"
+        width="0"
+        height="0"
+        src="https://www.youtube.com/embed/kM-XmhwDWSc?enablejsapi=1"
+        title="Música de la boda"
+        frameborder="0"
+        allow="autoplay; encrypted-media">
+      </iframe>
+    </section>
+
+    <!-- ITINERARIO -->
+    <section class="section itinerary-section">
+      <h2>Itinerario</h2>
+
+      <div class="itinerary-board">
+        <div class="itinerary-row left">
+          <div class="itinerary-content">
+            <i class="fa-solid fa-camera-retro"></i>
+            <h3>Fotos</h3>
+          </div>
+          <span class="timeline-dot"></span>
+        </div>
+
+        <div class="itinerary-row right">
+          <span class="timeline-dot"></span>
+          <div class="itinerary-content">
+            <i class="fa-solid fa-church"></i>
+            <h3>Ceremonia</h3>
+            <p>Hora pendiente</p>
+          </div>
+        </div>
+
+        <div class="itinerary-row left">
+          <div class="itinerary-content">
+            <i class="fa-solid fa-champagne-glasses"></i>
+            <h3>Brindis</h3>
+          </div>
+          <span class="timeline-dot"></span>
+        </div>
+
+        <div class="itinerary-row right">
+          <span class="timeline-dot"></span>
+          <div class="itinerary-content">
+            <i class="fa-solid fa-camera"></i>
+            <h3>Fotos</h3>
+          </div>
+        </div>
+
+        <div class="itinerary-row left">
+          <div class="itinerary-content">
+            <i class="fa-solid fa-music"></i>
+            <h3>Música</h3>
+          </div>
+          <span class="timeline-dot"></span>
+        </div>
+
+        <div class="itinerary-row right">
+          <span class="timeline-dot"></span>
+          <div class="itinerary-content">
+            <i class="fa-solid fa-people-pulling"></i>
+            <h3>Baile vals</h3>
+          </div>
+        </div>
       </div>
+
+      <p class="more-events">¡Corte del pastel y más!</p>
     </section>
 
     <!-- UBICACIÓN -->
@@ -106,28 +192,101 @@
         <p class="pending">Hora pendiente de confirmar</p>
       </div>
 
-      <a class="main-button" href="#" target="_blank" rel="noopener">
-        Ver mapa
-      </a>
+      <div class="map-buttons">
+        <a
+          class="main-button"
+          href="https://www.google.com/maps/search/?api=1&query=Hotel%20Borde%20Lago%20km%204%20camino%20a%20Ensenada"
+          target="_blank"
+          rel="noopener">
+          <i class="fa-solid fa-map-location-dot"></i>
+          Google Maps
+        </a>
+
+        <a
+          class="main-button"
+          href="https://waze.com/ul?q=Hotel%20Borde%20Lago%20km%204%20camino%20a%20Ensenada&navigate=yes"
+          target="_blank"
+          rel="noopener">
+          <i class="fa-brands fa-waze"></i>
+          Waze
+        </a>
+      </div>
+    </section>
+
+    <!-- CÓDIGO DE VESTIMENTA -->
+    <section class="section dress-code-section">
+      <h2>Código de vestimenta</h2>
+      <p class="dress-code-intro">Formal</p>
+
+      <div class="dress-code-grid">
+        <div class="dress-code-item">
+          <i class="fa-solid fa-person-dress"></i>
+          <h3>Mujeres</h3>
+          <p>Vestido formal. Reservemos el blanco, marfil y tonos similares para la novia.</p>
+        </div>
+
+        <div class="dress-code-item">
+          <i class="fa-solid fa-user-tie"></i>
+          <h3>Hombres</h3>
+          <p>Traje o pantalón de vestir con camisa. Evitar tenis, bermudas, jeans y camisetas.</p>
+        </div>
+      </div>
+
+      <p class="dress-code-note">
+        Agradecemos evitar prendas demasiado casuales para acompañar la formalidad de la celebración.
+      </p>
     </section>
 
     <!-- REGALOS -->
     <section class="section gifts-section">
       <h2>Sugerencia de regalos</h2>
+
       <p>
         Tu presencia en nuestra boda es el mejor regalo que podemos recibir.
         Si deseas hacernos un presente, agradeceremos mucho que sea en efectivo.
       </p>
     </section>
 
+    <!-- RECOMENDACIONES -->
+    <section class="section recommendations-section">
+      <h2>Recomendaciones</h2>
+
+      <div class="recommendations">
+        <div class="recommendation-item">
+          <i class="fa-solid fa-mobile-screen-button"></i>
+          <p>Usar el celular en modo vibración durante la ceremonia.</p>
+        </div>
+
+        <div class="recommendation-item">
+          <i class="fa-regular fa-clock"></i>
+          <p>Te recomendamos llegar con tiempo para ubicarte cómodamente.</p>
+        </div>
+
+        <div class="recommendation-item">
+          <i class="fa-solid fa-car"></i>
+          <p>El lugar cuenta con espacio para estacionamiento.</p>
+        </div>
+
+        <div class="recommendation-item">
+          <i class="fa-regular fa-heart"></i>
+          <p>Agradecemos confirmar tu asistencia con anticipación.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- CONFIRMACIÓN -->
     <section class="section rsvp-section">
       <h2>Confirma tu asistencia</h2>
+
       <p>
         Es muy importante que confirmes si podrás acompañarnos en este momento tan especial.
       </p>
 
-      <a class="main-button" href="#" target="_blank" rel="noopener">
+      <a
+        class="main-button"
+        href="https://wa.me/?text=Hola%2C%20confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Andrea%20y%20Jaime."
+        target="_blank"
+        rel="noopener">
         Confirmar asistencia
       </a>
     </section>
