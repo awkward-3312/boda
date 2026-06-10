@@ -36,7 +36,7 @@ if (openEnvelope && invitationSection) {
 // CUENTA REGRESIVA
 // ============================
 
-const weddingDate = new Date("2026-06-20T00:00:00");
+const weddingDate = new Date("2026-06-20T11:00:00");
 
 const daysText = document.getElementById("days");
 const hoursText = document.getElementById("hours");
