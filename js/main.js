@@ -6,8 +6,22 @@ const openEnvelope = document.getElementById("openEnvelope");
 const invitationSection = document.getElementById("invitacion");
 let envelopeAnimationTimer;
 
+function startWeddingAudio() {
+    const weddingAudio = document.getElementById("weddingAudio");
+
+    if (!weddingAudio || !weddingAudio.paused) {
+        return;
+    }
+
+    weddingAudio.play().catch(() => {
+        // Some browsers wait for a user gesture before playing audio.
+    });
+}
+
 if (openEnvelope && invitationSection) {
     openEnvelope.addEventListener("click", () => {
+        startWeddingAudio();
+
         invitationSection.scrollIntoView({
             behavior: "smooth"
         });
@@ -88,39 +102,44 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 // ============================
-// MÚSICA YOUTUBE
+// MÚSICA
 // ============================
 
 const musicBtn = document.getElementById("musicBtn");
-const playerFrame = document.getElementById("youtubePlayer");
+const weddingAudio = document.getElementById("weddingAudio");
 
-let playing = false;
+function updateMusicButton(isPlaying) {
+    if (!musicBtn) {
+        return;
+    }
 
-if (musicBtn && playerFrame) {
+    musicBtn.innerHTML = isPlaying
+        ? '<i class="fa-solid fa-pause"></i> Pausar música'
+        : '<i class="fa-solid fa-play"></i> Escuchar música';
+
+    musicBtn.setAttribute("aria-pressed", isPlaying ? "true" : "false");
+}
+
+if (weddingAudio) {
+    window.addEventListener("load", startWeddingAudio);
+
+    weddingAudio.addEventListener("play", () => {
+        updateMusicButton(true);
+    });
+
+    weddingAudio.addEventListener("pause", () => {
+        updateMusicButton(false);
+    });
+}
+
+if (musicBtn && weddingAudio) {
 
     musicBtn.addEventListener("click", () => {
 
-        if (!playing) {
-
-            playerFrame.contentWindow.postMessage(
-                '{"event":"command","func":"playVideo","args":""}',
-                '*'
-            );
-
-            musicBtn.innerHTML = '<i class="fa-solid fa-pause"></i> Pausar música';
-            musicBtn.setAttribute("aria-pressed", "true");
-            playing = true;
-
+        if (weddingAudio.paused) {
+            startWeddingAudio();
         } else {
-
-            playerFrame.contentWindow.postMessage(
-                '{"event":"command","func":"pauseVideo","args":""}',
-                '*'
-            );
-
-            musicBtn.innerHTML = '<i class="fa-solid fa-play"></i> Escuchar música';
-            musicBtn.setAttribute("aria-pressed", "false");
-            playing = false;
+            weddingAudio.pause();
         }
     });
 }

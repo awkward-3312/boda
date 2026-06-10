@@ -528,7 +528,7 @@ blockquote span {
     box-shadow: 0 22px 45px rgba(16,47,87,.32);
 }
 
-.youtube-player {
+audio {
     display: none;
 }
 
@@ -704,12 +704,6 @@ blockquote span {
     max-width: 300px;
     font-size: .94rem;
     line-height: 1.65;
-}
-
-/* RSVP */
-
-.rsvp-section {
-    background: white;
 }
 
 @media (prefers-reduced-motion: reduce) {
